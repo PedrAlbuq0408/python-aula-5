@@ -3,7 +3,6 @@ from datetime import datetime, date
 
 from excecoes import FormatoInvalidoError, IdadeInvalidaError
 
-# Padrões regex
 REGEX_EMAIL = r"^\w+([.\-]\w+)*@\w+([.\-]\w+)*\.[a-zA-Z]{2,}$"
 REGEX_CPF = r"^\d{3}\.?\d{3}\.?\d{3}-?\d{2}$"
 REGEX_TELEFONE = r"^(\(?\d{2}\)?\s?)?9?\d{4}-?\d{4}$"
@@ -35,7 +34,6 @@ def validar_data(valor):
     try:
         return datetime.strptime(valor, "%d/%m/%Y").date()
     except ValueError:
-        # Passou no regex, mas a data não existe (ex: 31/02/1990)
         raise FormatoInvalidoError("data", valor)
 
 
